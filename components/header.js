@@ -139,9 +139,9 @@ const Cases = styled(FlexContainer)`
     background: linear-gradient(to top, #ffffff5e 0%, #ffffff3d 100%);
     position: relative;
     letter-spacing: .1rem;
-    width: 15rem;
     text-align: center;
-    margin: 2rem;
+    margin: 1.5rem auto;
+    width: max-content;
 
     @media only screen and (max-width: 32rem) {
         margin: 1rem;
