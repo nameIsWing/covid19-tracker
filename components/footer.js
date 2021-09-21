@@ -22,7 +22,11 @@ const Footer = () => {
                     <ul>
                         {resources.map(resource => (
                             <li key={resource.name}>
-                                <a href={resource.link} rel="norefer" target="_blank">
+                                <a 
+                                    href={resource.link} 
+                                    rel="noreferrer" 
+                                    target="_blank"
+                                >
                                 {resource.name}
                                 </a>
                             </li>
