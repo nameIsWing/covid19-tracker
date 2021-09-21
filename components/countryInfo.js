@@ -188,10 +188,12 @@ const CountryDetails = styled(FlexContainer)`
     animation: ${entrance} .3s ease-in-out;
     
     h3 {
+        color: var(--green100);
         font-size: 1.25rem;
         font-family: var(--font-alt-2);
     }
     div:not(h3) {
+        color: var(--grey90);
         font-size: .875rem;
         padding-block: 1rem .25rem;
         padding-inline: 1rem 0;

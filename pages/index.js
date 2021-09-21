@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import CountryInfo from '../components/countryInfo';
-import { FlexContainer } from '../components/utils/reusables';
 import axios from 'axios';
 import Header from '../components/header';
+import Footer from '../components/footer';
 
 export async function getServerSideProps() {
     const res = await axios.get('https://api.covid19api.com/summary')
@@ -25,6 +25,7 @@ export default function Home({ data }) {
     <main>
         <Header data={data.Global} />
         <CountryInfo data={data.Countries}/>
+        <Footer />
     </main>
     </>
   )

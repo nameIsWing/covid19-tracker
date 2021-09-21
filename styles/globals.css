@@ -18,6 +18,7 @@
     --grey50: #b6bfcd;
     --grey40: #f6f7f9;
     --white100: #FFFFFF;
+    --white90: #fafafa;
     --font-main: 'Poppins', sans-serif;
     --font-alt: 'Merriweather', serif;
     --font-alt-2: 'Montserrat', sans-serif;
@@ -40,4 +41,7 @@ h1, h2, h3, h4 {
     margin: 0;
     font-family: var(--font-alt);
     color: var(--text-color-head);
+}
+a {
+    text-decoration: none;
 }

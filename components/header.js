@@ -7,15 +7,13 @@ import { useState, useEffect } from 'react';
 const Header = ( {data} ) => {
 
     const [ searchValue, setSearchValue ] = useState('');
-    const [ globalValue, setGlobalValue ] = useState(data)
+    const [ globalValue ] = useState(data)
 
     function numberWithCommas(value) {
         return value.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
     }
 
-    function search(e) {
-        e.preventDefault();
-        
+    function search() {
         const elTarget = document.getElementById(`${searchValue.charAt(0).toUpperCase() + searchValue.slice(1)}`);
         elTarget?.children[0].click();
         setTimeout(()=>elTarget?.scrollIntoView({
@@ -30,7 +28,7 @@ const Header = ( {data} ) => {
             const el = document.getElementById('main-header');
             if (window.scrollY > 348) {
                 el.style.position = 'sticky';
-                el.style.top = '-22rem';
+                el.style.top = '-21.625rem';
             } else {
                 el.style.position = 'relative';
                 el.style.top = '0';
@@ -53,11 +51,17 @@ const Header = ( {data} ) => {
                         Global<br/>COVID-19<br/>Statistics
                     </h2>
                 </GlobalInfo>
-                <CasesWrapper justify="space-between">
-                    <Cases title="Total Cases">
+                <CasesWrapper>
+                    <Cases 
+                        title="Total Cases" 
+                        data-new={`New Cases: ${numberWithCommas(globalValue.NewConfirmed)}`}
+                    >
                         {numberWithCommas(globalValue.TotalConfirmed)}
                     </Cases>
-                    <Cases title="Total Deaths">
+                    <Cases 
+                        title="Total Deaths" 
+                        data-new={`New Deaths: ${numberWithCommas(globalValue.NewDeaths)}`}
+                    >
                         {numberWithCommas(globalValue.TotalDeaths)}
                     </Cases>
                 </CasesWrapper>
@@ -65,7 +69,7 @@ const Header = ( {data} ) => {
             <SearchBar responsive align="center">
                 <SearchBarInput direction="row" align="center" height="100%">
                     <Image src="/icons/search.svg" width="24" height="24" />
-                    <form action="submit" onSubmit={ e => search(e)}>
+                    <form onSubmit={ e => { e.preventDefault(); search()}}>
                         <input 
                             type="search" 
                             placeholder="Search by Country" 
@@ -98,15 +102,16 @@ const HeadNav = styled(FlexContainer)`
         /* background-color: var(--green-1); */
         border-radius: .25rem;
         color: var(--white100);
-        font-family: var(--font-alt-2);
+        font-family: var(--font-main);
         font-size: 1.125rem;
-        font-weight: 600;
+        font-weight: 500;
         padding: .875rem;
         margin-block: .25rem;
         width: 100%;
     }
 `
 const GlobalWrapper = styled(FlexContainer)`
+    overflow: hidden;
     @media only screen and (max-width: 32rem) {
             flex-direction: column;
         }
@@ -129,22 +134,27 @@ const GlobalInfo = styled(FlexContainer)`
     }
 `
 const CasesWrapper = styled(FlexContainer)`
+    /* overflow: hidden;
+    padding: 1.25rem .5rem; */
     @media only screen and (max-width: 32rem) {
             flex-direction: row;
+            margin-inline: 1.75rem;
         }
 `
 const Cases = styled(FlexContainer)`
-    padding: 1rem 2rem;
-    border-radius: 0 2rem 2rem 2rem;
-    background: linear-gradient(to top, #ffffff5e 0%, #ffffff3d 100%);
+    color: var(--white90);
+    font-size: 1.5rem;
+    padding-block: 1rem;
+    padding-inline: 2rem;
     position: relative;
     letter-spacing: .1rem;
     text-align: center;
-    margin: 1.5rem auto;
     width: max-content;
+    margin: 1.5rem auto;
 
     @media only screen and (max-width: 32rem) {
-        margin: 1rem;
+        margin: 0 auto;
+        transform: scale(.92);
         }
 
     &::before {
@@ -156,7 +166,18 @@ const Cases = styled(FlexContainer)`
         left: -1rem;
         background: var(--green110);
         padding: .25rem .75rem;
-        border-radius: 1rem;
+        border-radius: .25rem;
+    }
+    &::after {
+        content: attr(data-new);
+        color: var(--green110);
+        font-size: .875rem;
+        position: absolute;
+        bottom: -0.5rem;
+        left: 0rem;
+        background: transparent;
+        padding: .25rem .75rem;
+        border-radius: .25rem;
     }
 `
 const SearchBar = styled(FlexContainer)`
@@ -169,18 +190,19 @@ const SearchBar = styled(FlexContainer)`
 const SearchBarInput = styled(FlexContainer)`
     background: var(--white100);
     box-shadow: 0 .25rem .75rem #1a5b5822;
+    border: .125rem solid var(--green100);
     border-radius: 10rem;
-    width: 100%;
     width: calc(100% - 5rem);
-    padding: 1rem 1.75rem;
-    position: relative;
+    padding-inline: 1.5rem;
     
     input {
+        padding: 1rem 1.25rem;
         color: var(--green120);
         width: 100%;
+        height: 100%;
         outline: none;
         border: none;
         font-size: 1.125rem;
-        padding-left: 1rem;
+        /* background: red; */
     }
 `
