@@ -2,7 +2,7 @@ import { FlexContainer } from './utils/reusables';
 import styled from 'styled-components';
 
 const resources = [
-    { name: 'COVID 19 API', link: 'http://www.covid19api.com'},
+    { name: 'COVID 19 API', link: 'https://www.covid19api.com'},
     { name: 'Rapid API: World Population', link: 'https://rapidapi.com/search/world%20population'},
 ]
 
@@ -38,7 +38,29 @@ export default Footer
 
 const FooterContainer = styled.footer`
     background-color: var(--grey100);
-    `
+    position: relative;
+    width: 100%;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -2rem;
+        left: 0;
+        width: 100%;
+        height: 2rem;
+        background-color: inherit;
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        top: -4rem;
+        left: 0;
+        width: 100%;
+        height: 4rem;
+        background-color: white;
+        border-radius: 10rem;
+    }
+`
 const FooterContent = styled(FlexContainer)`
     background-color: var(--grey100);
     height: 15rem;
@@ -79,9 +101,16 @@ const Resources = styled.div`
             text-align: center;
         }
     }
+    ul {
+        margin-inline: 0;
+        padding: 0;
+    }
     li {
         list-style: none;
         margin-bottom: .5rem;
+        @media only screen and (max-width: 36rem) {
+        text-align: center;
+    }
     }
     a {
         font-size: .875rem;
