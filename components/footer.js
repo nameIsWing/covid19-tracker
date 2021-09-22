@@ -1,5 +1,6 @@
 import { FlexContainer } from './utils/reusables';
 import styled from 'styled-components';
+import Image from 'next/image';
 
 const resources = [
     { name: 'COVID 19 API', link: 'https://www.covid19api.com'},
@@ -34,7 +35,14 @@ const Footer = () => {
                     </ul>
                 </Resources>
             </FooterContent>
-            <PoweredBy responsive></PoweredBy>
+            <PoweredBy responsive direction="row" align="center">
+                <h4>Powered by:</h4>
+                <Image src="/icons/reactjs.svg" height="32" width="32"/>
+                &nbsp;&nbsp;&nbsp;
+                <Image src="/icons/nextjs.svg" height="48" width="48"/>
+                &nbsp;&nbsp;&nbsp;
+                <Image src="/icons/vercel.svg" height="62" width="62"/>
+            </PoweredBy>
         </FooterContainer>
     )
 }
@@ -134,8 +142,20 @@ const Resources = styled.div`
 `
 const PoweredBy = styled(FlexContainer)`
     /* background-color: var(--grey90); */
-    height: 3rem;
+    padding: 1rem .5rem;
     position: relative;
+    color: var(--grey70);
+    font-weight: 700;
+    justify-content: center;
+
+    h4 {
+        display: inline-block;
+        color: var(--grey70);
+        margin-right: 1rem;
+    }
+    img {
+        margin-left: .5rem;
+    }
 
     &::after {
         content: '';

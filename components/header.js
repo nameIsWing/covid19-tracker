@@ -40,9 +40,12 @@ const Header = ( {data} ) => {
 
     return (
         <MainHeader id="main-header">
-            <HeadNav>
-                <FlexContainer responsive={true}>
+            <HeadNav responsive direction="row" align="center" justify="space-between">
+                <FlexContainer width="50%">
                     <h2>COVID-19 Tracker</h2>
+                </FlexContainer>
+                <FlexContainer width="50%">
+                    <h4>Updated as of: {globalValue.Date.substr(0, 16)}</h4>
                 </FlexContainer>
             </HeadNav>
             <GlobalWrapper responsive={true} direction="row">
@@ -95,11 +98,9 @@ const MainHeader = styled(FlexContainer)`
     `
 const HeadNav = styled(FlexContainer)`
     z-index: 9;
-    /* background-color: var(--green-1); */
     flex-grow: 0;
 
     h2{
-        /* background-color: var(--green-1); */
         border-radius: .25rem;
         color: var(--white100);
         font-family: var(--font-main);
@@ -108,6 +109,17 @@ const HeadNav = styled(FlexContainer)`
         padding: .875rem;
         margin-block: .25rem;
         width: 100%;
+    }
+    h4{
+        border-radius: .25rem;
+        color: var(--green110);
+        font-family: var(--font-main);
+        font-size: .875rem;
+        font-weight: 400;
+        padding: .875rem;
+        margin-block: .25rem;
+        width: 100%;
+        text-align: right;
     }
 `
 const GlobalWrapper = styled(FlexContainer)`
