@@ -28,7 +28,7 @@ const Header = ( {data} ) => {
             const el = document.getElementById('main-header');
             if (window.scrollY > 348) {
                 el.style.position = 'sticky';
-                el.style.top = '-21.625rem';
+                el.style.top = '-22rem';
             } else {
                 el.style.position = 'relative';
                 el.style.top = '0';
@@ -87,7 +87,7 @@ export default Header
 
 const MainHeader = styled(FlexContainer)`
     background: var(--gradient1);
-    border-radius: 0 0 2rem 2rem;
+    /* border-radius: 0 0 2rem 2rem; */
     height: 24rem;
     position: relative;
     background-size: cover;
@@ -198,7 +198,7 @@ const SearchBarInput = styled(FlexContainer)`
     input {
         padding: 1rem 1.25rem;
         color: var(--green120);
-        width: 100%;
+        width: clamp(17rem, 60vw, 52rem);
         height: 100%;
         outline: none;
         border: none;

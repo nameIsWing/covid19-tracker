@@ -76,7 +76,7 @@ const CountryInfo = ({ data }) => {
 
     return (
         <FlexContainer responsive align="center" padding="2rem 0" margin="4rem auto">
-            <Title direction="row"  borderRadius=".25rem .25rem 0 0">
+            <Title direction="row" >
                 {
                     headers.map(({title, width, sortKey}) => {
                         return (
@@ -123,9 +123,9 @@ const CountryInfo = ({ data }) => {
                                         <h3>
                                         {targetCountry.country_name}
                                         </h3>
-                                        <div>
+                                        <Population>
                                             Population: {numberWithCommas(targetCountry.population)}
-                                        </div>
+                                        </Population>
                                         <div>
                                             Covid Cases: {affectedRate(data.TotalConfirmed, targetCountry.population)}
                                         </div>
@@ -197,9 +197,19 @@ const CountryDetails = styled(FlexContainer)`
         font-size: .875rem;
         padding-block: 1rem .25rem;
         padding-inline: 1rem 0;
+        position: relative;
     }
 
     @media only screen and (max-width: 48rem) {
         flex-direction: column;
+    }
+`
+const Population = styled.div`
+    position: relative;
+
+    &::after {
+        content: ' ';
+        position: absolute;
+
     }
 `

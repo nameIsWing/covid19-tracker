@@ -32,7 +32,6 @@ export const FlexContainer = styled.div`
 
 // for Title header
 export const Title = styled(FlexContainer)`
-    border-radius: 1rem 1rem 0 0;
     overflow: hidden;
 
     h4 {

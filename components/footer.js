@@ -34,6 +34,7 @@ const Footer = () => {
                     </ul>
                 </Resources>
             </FooterContent>
+            <PoweredBy responsive></PoweredBy>
         </FooterContainer>
     )
 }
@@ -45,7 +46,7 @@ const FooterContainer = styled.footer`
     position: relative;
     width: 100%;
 
-    &::before {
+    /* &::before {
         content: '';
         position: absolute;
         top: -2rem;
@@ -63,11 +64,11 @@ const FooterContainer = styled.footer`
         height: 4rem;
         background-color: white;
         border-radius: 10rem;
-    }
+    } */
 `
 const FooterContent = styled(FlexContainer)`
     background-color: var(--grey100);
-    height: 15rem;
+    
     padding: 1.5rem 2rem;
 
     @media only screen and (max-width: 36rem) {
@@ -91,6 +92,7 @@ const AppName = styled.div`
     @media only screen and (max-width: 36rem) {
         width: 100%;
         align-items: center;
+        padding-block: .5rem 2rem;
     }
     `
 const Resources = styled.div`
@@ -128,5 +130,21 @@ const Resources = styled.div`
     @media only screen and (max-width: 36rem) {
         width: 70%;
         margin: auto
+    }
+`
+const PoweredBy = styled(FlexContainer)`
+    /* background-color: var(--grey90); */
+    height: 3rem;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        height: .0625rem;
+        background-color: var(--grey70);
     }
 `
