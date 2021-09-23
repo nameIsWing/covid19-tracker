@@ -57,13 +57,13 @@ const Header = ( {data} ) => {
                 <CasesWrapper>
                     <Cases 
                         title="Total Cases" 
-                        data-new={`New Cases: ${numberWithCommas(globalValue.NewConfirmed)}`}
+                        data-new={`New: ${numberWithCommas(globalValue.NewConfirmed)}`}
                     >
                         {numberWithCommas(globalValue.TotalConfirmed)}
                     </Cases>
                     <Cases 
                         title="Total Deaths" 
-                        data-new={`New Deaths: ${numberWithCommas(globalValue.NewDeaths)}`}
+                        data-new={`New: ${numberWithCommas(globalValue.NewDeaths)}`}
                     >
                         {numberWithCommas(globalValue.TotalDeaths)}
                     </Cases>
@@ -190,6 +190,7 @@ const Cases = styled(FlexContainer)`
         background: transparent;
         padding: .25rem .75rem;
         border-radius: .25rem;
+        white-space: nowrap;
     }
 `
 const SearchBar = styled(FlexContainer)`
