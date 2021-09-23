@@ -72,7 +72,7 @@ const Header = ( {data} ) => {
             <SearchBar responsive align="center">
                 <SearchBarInput direction="row" align="center" height="100%">
                     <Image src="/icons/search.svg" width="24" height="24" />
-                    <form onSubmit={ e => { e.preventDefault(); search()}}>
+                    <form onSubmit={ e => { e.preventDefault(); search()}} style={{height:"100%", width:"100%"}}>
                         <input 
                             type="search" 
                             placeholder="Search by Country" 
@@ -107,7 +107,7 @@ const HeadNav = styled(FlexContainer)`
         font-size: 1.125rem;
         font-weight: 500;
         padding: .875rem;
-        margin-block: .25rem;
+        margin: .25rem 0;
         width: 100%;
     }
     h4{
@@ -117,7 +117,7 @@ const HeadNav = styled(FlexContainer)`
         font-size: .875rem;
         font-weight: 400;
         padding: .875rem;
-        margin-block: .25rem;
+        margin: .25rem 0;
         width: 100%;
         text-align: right;
     }
@@ -129,7 +129,7 @@ const GlobalWrapper = styled(FlexContainer)`
         }
 `
 const GlobalInfo = styled(FlexContainer)`
-    padding-inline: clamp(3rem, 15vw, 5rem);
+    padding: 0 clamp(3rem, 15vw, 5rem);
     flex-grow: 1;
     width: 50%;
 
@@ -150,14 +150,13 @@ const CasesWrapper = styled(FlexContainer)`
     padding: 1.25rem .5rem; */
     @media only screen and (max-width: 32rem) {
             flex-direction: row;
-            margin-inline: 1.75rem;
+            margin: 0 1.75rem;
         }
 `
 const Cases = styled(FlexContainer)`
     color: var(--white90);
     font-size: 1.5rem;
-    padding-block: 1rem;
-    padding-inline: 2rem;
+    padding: 1rem 2rem;
     position: relative;
     letter-spacing: .1rem;
     text-align: center;
@@ -206,12 +205,13 @@ const SearchBarInput = styled(FlexContainer)`
     border: .125rem solid var(--green100);
     border-radius: 10rem;
     width: calc(100% - 5rem);
-    padding-inline: 1.5rem;
+    padding: 0 1.5rem;
     
     input {
         padding: 1rem 1.25rem;
         color: var(--green120);
-        width: clamp(17rem, 60vw, 52rem);
+        /* width: clamp(17rem, 60vw, 52rem); */
+        width: 100%;
         height: 100%;
         outline: none;
         border: none;
